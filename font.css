@@ -1,0 +1,23 @@
+/*https://www.google.com/fonts#QuickUsePlace:quickUse*/
+/*font-family: 'Raleway', sans-serif;*/
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,100);
+@import url(http://fonts.googleapis.com/css?family=Dosis:400,800);
+/*font-family: 'Montserrat Subrayada', sans-serif;*/
+@import url(http://fonts.googleapis.com/css?family=Montserrat+Subrayada:400,700);
+/*
+ * Hanna (Korean) http://www.google.com/fonts/earlyaccess
+ */
+/*@font-face {
+  font-family: 'Hanna';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/hanna/v3/BM-HANNA.eot);
+  src: url(//fonts.gstatic.com/ea/hanna/v3/BM-HANNA.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/hanna/v3/BM-HANNA.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/hanna/v3/BM-HANNA.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/hanna/v3/BM-HANNA.ttf) format('truetype');
+}*/
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+/*font-family: 'Nanum Gothic', serif;*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);

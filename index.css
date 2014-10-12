@@ -1,0 +1,361 @@
+body {
+	position: relative;
+}
+
+body:after {
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+	background-image: url(background.png); 
+	background-size: cover;
+    height: 100%;
+    opacity : 0.5;
+    z-index: -1;
+}
+
+article {
+	position : relative;
+	top : 30px;
+	text-align: center;
+	transition : left 0.4s;
+	-webkit-transition : left 0.4s;
+}
+
+article.closed{
+	left : 0px;
+}
+
+article.opened{
+	left : 200px;
+}
+
+article > h1 {
+	padding-top : 30px;
+	padding-bottom : 20px;
+	font-size : 60px;
+	font-family: 'Montserrat Subrayada', sans-serif;
+	color : RGBA(12, 39, 76, 1);
+	text-shadow: 2px 2px 0px RGBA(25, 189, 196, 1);
+}
+
+article > svg > rect {
+	fill : RGBA(240, 240, 242, 1);
+	stroke : RGBA(39, 40, 34, 1);
+	stroke-width : 2;
+}
+
+article > svg > g.unviewing {
+	display : none;
+}
+
+article > svg > g#infoBox{
+	/*-webkit-transition : transform 0.1s;*/
+}
+
+article > svg > g.circleGroup > circle {
+	-webkit-transition : transform 1s, fill 2s;
+/*	stroke : RGBA(39, 40, 34, 0.1);
+	stroke-width : 40;
+*/}
+
+article > svg > g.circleBorderGroup > circle{
+	fill : RGBA(39, 40, 34, 0.0);
+}
+
+article>svg>g.circleBorderGroup>circle:hover {
+	fill : RGBA(39, 40, 34, 0.1) !important;
+}
+
+article > svg > g.circleGroup > circle:hover{
+	box-shadow: 10px 10px 5px #DC4085 !important;
+}
+
+article > svg > g.lineGroup > line {
+	-webkit-transition : transform 1s;
+	stroke : RGBA(39, 40, 34, 1.0);
+	stroke-width : 2;
+}
+
+article > svg > g.lineBorderGroup > line {
+	-webkit-transition : transform 1s;
+	stroke : RGBA(39, 40, 34, 0.0);
+	stroke-width : 40;
+}
+
+article > svg > g.lineBorderGroup > line:hover{
+	stroke : RGBA(39, 40, 34, 0.1);
+}
+
+article > svg > g.barGroup > rect {
+	-webkit-transition : transform 1s, fill 1s;
+	stroke : RGBA(39, 40, 34, 0.1);
+	stroke-bottom : 2px #272822;
+}
+
+aside {
+	border-top-right-radius : 10px; 
+	border-bottom-right-radius : 10px; 
+	width : 460px;
+	position : fixed;
+	top : 0px;
+	padding : 20px;
+	background: RGBA(12, 39, 77, 0.8);
+	transition : left 0.4s;
+	-webkit-transition : left 0.4s;
+}
+
+aside.closed{
+	left : -500px;
+}
+
+aside.opened{
+	left : 0px;
+}
+
+aside > button:last-child{
+	/*open sidebar button*/
+	font-family: "Dosis", sans-serif;
+	font-size : 15px;
+	font-weight: 400;
+	width : 30px;
+	height : 100px;
+	position : absolute;
+	left : 500px;
+	top : 30px;
+	border : none;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background: RGBA(12, 39, 76, 1);
+	color : RGBA(255, 246, 238, 1);
+}
+
+aside > button:last-child > span{
+	display : block;
+	margin-top : 20px;
+	-webkit-transform: rotate(270deg);
+}
+
+aside > button:last-child:focus{
+	outline: none;
+}
+
+aside section {
+	border : 1px solid RGBA(255, 246, 238, 1);
+	border-radius: 10px;
+	margin-bottom : 10px;
+	padding : 20px 0px;
+	text-align: center;
+}
+
+aside section p {
+	font-family: "Raleway";
+	font-weight: 100;
+	font-size : 20px;
+	text-align: center;
+	margin-bottom : 15px;
+	color : RGBA(255, 246, 238, 1);
+}
+
+aside section:first-child{
+	border : none;
+	padding : 20px 0px;
+}
+
+aside section:first-child button{
+	/*data apply button*/
+	font-size : 30px;
+	font-family: 'Dosis', sans-serif;
+	color : RGBA(25, 189, 196, 1);
+	width : 230px;
+	height : 60px;
+	background: none;
+	border : 1px solid RGBA(25, 189, 196, 1);
+}
+
+aside section:first-child button:hover{
+	color : RGBA(239, 64, 137, 1);
+	border : 1px solid RGBA(239, 64, 137, 1);
+	padding : 10px 0px;
+}
+
+aside section:first-child button:focus {
+	outline: none;
+}
+
+#GraphType {
+	text-align: center;
+}
+
+#GraphType input[type='button'] {
+	width : 100px;
+	height : 40px;
+	border : none;
+	margin : 0px 2px;
+	border-radius: 2px;
+	background: RGBA(255, 246, 238, 1);
+	border : 1px solid RGBA(25, 189, 196, 1);
+	box-shadow: 2px 2px 0px RGBA(25, 189, 196, 1);
+}
+
+#GraphType input[type='button'].selected {
+	border : 1px solid RGBA(239, 64, 137, 1);
+	box-shadow: 2px 2px 0px RGBA(239, 64, 137, 1);
+}
+
+#GraphType input[type='button']:focus {
+	outline: none;
+
+}
+
+#ColorSet {
+	padding-left : 10px;
+	padding-right : 10px;
+}
+
+#ColorSet ul{
+	width : 320px;
+	margin : auto;
+}
+
+#ColorSet ul li{
+	text-align: left;
+	height : 20px;
+	margin : 4px 0px;
+}
+
+#ColorSet ul li p {
+	text-align: left;
+	display : inline-block;
+	width : 40px;
+	color : #F0F0F2;
+}
+
+#ColorSet ul li p:nth-child(2), #ColorSet ul li p:nth-child(4) {
+	font-size: 13px;
+	font-family: 'Nanum Gothic', serif;
+}
+
+#ColorSet ul li input[type="text"]{
+	height : inherit;
+	width : 100px;
+	border-radius: 2px;
+	border : none;
+	background: RGBA(255, 246, 238, 1);
+}
+
+#ColorSet ul li.fixed p.inputed{
+	width : 100px;
+}
+
+#ColorSet ul li.fixed{
+	padding-bottom: 10px;
+	margin-bottom : 10px;
+	border-bottom: 1px solid rgba(255, 246, 238, 0.2);
+}
+
+#ColorSet ul li.fixed p:nth-child(3){
+	font-size : 16px;
+}
+
+#ColorSet ul li input[type="text"]:focus{
+	background: RGBA(239, 64, 137, 0.9);
+	outline: none;
+}
+
+#ColorSet ul li input[type='color']{
+	height : inherit;
+}
+
+#ColorSet ul li input[type='button']{
+	height : inherit;
+	width : 20px;
+	background: RGBA(25, 189, 196, 1);
+	border-radius: 2px;
+	border : none;
+}
+
+#ColorSet ul li input[type='button']:focus{
+	outline: none;
+}
+
+
+#DataForm {
+	text-align : center;
+}
+
+#DataForm > ul {
+	width : 380px;
+	margin : auto;
+	margin-bottom : 6px;
+	font-size : 14px;
+	font-family : helvetica;
+	text-align: left;
+}
+
+#DataForm > ul > li{
+	display : inline-block;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	font-size: 15px;
+	color : RGBA(255, 246, 238, 1);
+}
+
+#DataForm > ul > li:nth-child(-n+2){
+	width : 70px;
+}
+
+#DataForm > ul > li:nth-child(3){
+	width : 180px;
+}
+
+#DataForm > form{
+	margin : 3px 0px;
+}
+
+#DataForm > form > input[type="text"]{
+	height : 20px;
+	border-radius : 3px;
+	border : none;
+}
+
+#DataForm > form > input[type="text"]:focus{
+	background: RGBA(239, 64, 137, 0.9);
+	outline: none;
+}
+
+#DataForm > form > input[type="text"]:nth-child(-n+2){
+	width : 70px;
+}
+
+#DataForm > form > input[type="text"]:nth-child(3){
+	width : 180px;
+}
+
+#DataForm > form > input[type="button"]{
+	text-align: center;
+	height : 20px;
+	width : 40px;
+	border : none;
+	border-radius : 3px;
+	background: RGBA(25, 189, 196, 1);
+}
+
+
+#DataForm > form > input[type="button"]:focus{
+	outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+<script type="x-tmpl-mustache" id="infoBoxSet">
+	<g id="infoBox">
+		// info background
+		<rect x="0" y="0" fill="RGBA(30, 163, 153, 0.2)" width="100" height="100"></rect>
+		<text id="key" x="0" y="0"></text>
+		<text id="value" x="0" y="0"></text>
+		<text id="comment" x="0" y="0"></text>
+	</g>
+</script>
+
+<script type="x-tmpl-mustache" id="dataInput">
+	<form>
+		<input type="text" name="key" value="{{key}}"></input>
+		<input type="text" name="value" value="{{value}}"></input>
+		<input type="text" name="comment" value="{{comment}}"></input>
+		<input class="delete" type="button" value="-"></input>
+	</form>
+</script>
+<script type="x-tmpl-mustache" id="svgSet">
+	<svg width="{{width}}" height="{{height}}">
+	</svg>
+</script>
+<script type="x-tmpl-mustache" id="animateLineSet">
+	<animate attributeName = "{{attributeName}}" dur="{{dur}}" from="{{from}}" to="{{to}}" repeatCount="{{repeatCount}}" />
+</script>
+<script type="x-tmpl-mustache" id="colorSelectSet">
+	<li>
+		<p class="over">{{over}}</p>
+		<p> 이상 </p>
+		<input class="inputed" type="text" value="{{upper}}" />
+		<p> 미만 </p>
+		<input type="color" value="{{colorValue}}"/>
+		<input type="button" value="-"/>
+	</li>
+</script>
+
+<script type="x-tmpl-mustache" id="circleSet">
+	<circle cx="{{cx}}" cy="{{cy}}" r="{{r}}" data-key="{{dataKey}}" data-value="{{dataValue}}" style="-webkit-transform:translate({{xPos}},{{yPos}});fill:{{fill}};"/>
+</script>
+<script type="x-tmpl-mustache" id="lineSet">
+	<line class="{{class}}" x1="{{x1}}" y1="{{y1}}" x2="{{x2}}" y2="{{y2}}" data-key="{{dataKey}}" data-value="{{dataValue}}" style="-webkit-transform:translate({{xPos}},{{yPos}}) rotate({{rotate}});"/>
+</script>
+
+<script type="x-tmpl-mustache" id="textSet">
+	<text x="{{x}}" y="{{y}}" fill="{{fill}}">{{text}}</text>
+</script>
+
+<script type="x-tmpl-mustache" id="rectSet">
+		<rect x="{{x}}" y="{{y}}" data-key="{{dataKey}}" width="{{width}}" height="{{height}}" style="-webkit-transform:translate({{xPos}},{{yPos}});fill:{{fill}};"/>
+</script>
+
+<script type="x-tmpl-mustache" id="gSet">
+	<g>{{contained}}</g>
+</script>

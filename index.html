@@ -1,65 +1,137 @@
-<!doctype html>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!DOCTYPE>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Kjhwee91.github.com by kjhwee91</title>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="font.css">
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="template" type="text/css" href="template.htm">
+</head>
+	<body>
+		<article class="closed">
+			<h1>THIS IS GRAPH</h1>
+		</article>
+		<aside class="closed">
+			<section>
+				<button id="dataApplyButton">DATA APPLY</button>
+			</section>
+			<section id="GraphType">
+				<p>Select GraphType</p>
+				<input type="button" value="bar" />
+				<input type="button" value="circle" />
+				<input type="button" value="line" class="selected" />
+			</section>
+			<section id="ColorSet">
+				<p>Customize ColorSet</p>
+				<!-- 범위에 따른 색상 지정 -->
+				<ul>
+					<li class="fixed">
+						<p class="over">200</p>
+						<p> 이상 </p>
+						<p class="inputed">Infinity</p>
+						<p> 미만 </p>
+						<input type="color" value="#1EA399">
+					</li>
+					<li class="add">
+						<p class="over">200</p>
+						<p> 이상 </p>
+						<input type="text" value="?">
+						<p> 미만 </p>
+						<input type="color">
+						<input type="button" value="+">
+					</li>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Kjhwee91.github.com</h1>
-        <p></p>
+				<ul>
+			</section>
+			<section id="DataForm">
+				<p>Edit Data</p>
+				<ul>
+					<li>key</li>
+					<li>value</li>
+					<li>comment<li>
+				</ul>
+				<form class="dataAddForm">
+					<input type="text" name="key" value="필수"></input>
+					<input type="text" name="value" value="필수/숫자를 입력하세요."></input>
+					<input type="text" name="comment" value="선택"></input>
+					<input class="add" type="button" value="+"></input>
+				</form>
+			</section>
+			<button><span>OPEN</span></button>
+		</aside>
+	</body>
 
+	<script type="text/javascript" src="template/mustache.js"></script>
+	<script type="x-tmpl-mustache" id="infoBoxSet">
+		<g id="infoBox">
+			// info background
+			<rect x="0" y="0" fill="RGBA(30, 163, 153, 0.2)" width="100" height="100"></rect>
+			<text id="key" x="0" y="0"></text>
+			<text id="value" x="0" y="0"></text>
+			<text id="comment" x="0" y="0"></text>
+		</g>
+	</script>
+	<script type="x-tmpl-mustache" id="dataInput">
+		<form>
+			<input type="text" name="key" value="{{key}}"></input>
+			<input type="text" name="value" value="{{value}}"></input>
+			<input type="text" name="comment" value="{{comment}}"></input>
+			<input class="delete" type="button" value="-"></input>
+		</form>
+	</script>
+	<script type="x-tmpl-mustache" id="svgSet">
+		<svg width="{{width}}" height="{{height}}">
+		</svg>
+	</script>
+	<script type="x-tmpl-mustache" id="animateLineSet">
+		<animate attributeName = "{{attributeName}}" dur="{{dur}}" from="{{from}}" to="{{to}}" repeatCount="{{repeatCount}}" />
+	</script>
+	<script type="x-tmpl-mustache" id="colorSelectSet">
+		<li>
+			<p class="over">{{over}}</p>
+			<p> 이상 </p>
+			<input class="inputed" type="text" value="{{upper}}" />
+			<p> 미만 </p>
+			<input type="color" value="{{colorValue}}"/>
+			<input type="button" value="-"/>
+		</li>
+	</script>
 
-        <p class="view"><a href="https://github.com/kjhwee91">View My GitHub Profile</a></p>
+	<script type="x-tmpl-mustache" id="circleSet">
+		<circle cx="{{cx}}" cy="{{cy}}" r="{{r}}" data-key="{{dataKey}}" data-value="{{dataValue}}" style="-webkit-transform:translate({{xPos}},{{yPos}});fill:{{fill}};"/>
+	</script>
+	<script type="x-tmpl-mustache" id="lineSet">
+		<line class="{{class}}" x1="{{x1}}" y1="{{y1}}" x2="{{x2}}" y2="{{y2}}" data-key="{{dataKey}}" data-value="{{dataValue}}" style="-webkit-transform:translate({{xPos}},{{yPos}}) rotate({{rotate}});"/>
+	</script>
 
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+	<script type="x-tmpl-mustache" id="textSet">
+		<text x="{{x}}" y="{{y}}" fill="{{fill}}">{{text}}</text>
+	</script>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+	<script type="x-tmpl-mustache" id="rectSet">
+  		<rect x="{{x}}" y="{{y}}" data-key="{{dataKey}}" width="{{width}}" height="{{height}}" style="-webkit-transform:translate({{xPos}},{{yPos}});fill:{{fill}};"/>
+	</script>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+	<script type="x-tmpl-mustache" id="gSet">
+		<g>{{contained}}</g>
+	</script>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+	<script type="text/javascript" src="script/data.js"></script>
+	<script type="text/javascript" src="script/GraphFlag.js"></script>
+	<script type="text/javascript" src="script/Renderer.js"></script>
+	<script type="text/javascript" src="script/InitialSetting.js"></script>
+	<script type="text/javascript" src="script/DataController.js"></script>
+	<script type="text/javascript" src="script/InfoController.js"></script>
+	<script type="text/javascript" src="script/Map.js"></script>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+	<script type="text/javascript">
+		//customizedColor / testDataArray / SVGSetting
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+		document.addEventListener("DOMContentLoaded", function(){
+			var initSet = new InitialSetting();
+			initSet.service(800, 450, testDataArray);
+		}); 
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+	</script>
 </html>
